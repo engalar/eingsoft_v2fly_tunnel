@@ -1,0 +1,40 @@
+{
+  "reverse": {
+    "portals": [
+      {
+        "tag": "portal",
+        "domain": "anything.example.com"
+      }
+    ]
+  },
+  "inbounds": [
+    {
+      "tag": "tunnel",
+      "port": 4443,
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "{{your user id}}",
+            "alterId": 16
+          }
+        ]
+      }
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": ["external"],
+        "outboundTag": "portal"
+      },
+      {
+        "type": "field",
+        "inboundTag": ["tunnel"],
+        "domain": ["full:anything.example.com"],
+        "outboundTag": "portal"
+      }
+    ]
+  }
+}
