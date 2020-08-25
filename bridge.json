@@ -1,0 +1,50 @@
+{
+  "reverse": {
+    "bridges": [
+      {
+        "tag": "bridge",
+        "domain": "anything.example.com"
+      }
+    ]
+  },
+  "outbounds": [
+    {
+      "tag": "tunnel",
+      "protocol": "vmess",
+      "settings": {
+        "vnext": [
+          {
+            "address": "{{your serve ip}}",
+            "port": 4443,
+            "users": [
+              {
+                "id": "{{your user id}}",
+                "alterId": 16
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "protocol": "freedom",
+      "settings": {},
+      "tag": "out"
+    }
+  ],
+  "routing": {
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": ["bridge"],
+        "domain": ["full:anything.example.com"],
+        "outboundTag": "tunnel"
+      },
+      {
+        "type": "field",
+        "inboundTag": ["bridge"],
+        "outboundTag": "out"
+      }
+    ]
+  }
+}
