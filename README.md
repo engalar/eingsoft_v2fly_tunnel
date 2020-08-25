@@ -8,4 +8,6 @@ docker run --name v2fly --restart always -d -v $PWD/portal.json:/etc/v2ray/confi
 v2ray --config bridge.json
 ```
 ## local use
+```sh
 v2ray --config local.json
+```
