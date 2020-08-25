@@ -1,0 +1,34 @@
+{
+    "log": {
+        "loglevel": "warning"
+    },
+    "inbound": {
+        "listen": "127.0.0.1",
+        "port": 2333,
+        "protocol": "http",
+        "settings": {
+            "auth": "noauth",
+            "udp": true,
+            "ip": "127.0.0.1"
+        }
+    },
+    "outbound": {
+        "protocol": "vmess",
+        "settings": {
+            "vnext": [
+                {
+                    "address": "{{your server ip}}",
+                    "port": 4443,
+                    "users": [
+                        {
+                            "id": "{{your user id}}",
+                            "level": 1,
+                            "alterId": 16
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "routing": {}
+}
